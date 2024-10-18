@@ -1,0 +1,36 @@
+<div class="content" [ngClass]="{ 'single-column': !loadedPerson.name?.length }">
+  <section class="add-section">
+    <h2>Create a new Duty for {{loadedPerson.name}}</h2>
+    <mat-form-field>
+      <mat-label>Duty Name</mat-label>
+      <input type="text" matInput [(ngModel)]="dutyName" placeholder="What is the name of the Duty?">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Duty Start Date</mat-label>
+      <input matInput [(ngModel)]="dutyStartDate" [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <button mat-stroked-button (click)="submit()" aria-label="Create a new Duty">Create</button>
+  </section>
+
+  <!--this would make a great component-->
+  <section class="duties-section" *ngIf="loadedPerson">
+    <div class="header-container">
+      <h2>Astronaut Duties</h2>
+    </div>
+
+    <p *ngIf="!loadedPerson.astronautDuties?.length">{{ loadedPerson.name }} has no Astronaut duties. Maybe some day!</p>
+    <ul>
+      <li *ngFor="let duty of loadedPerson.astronautDuties">
+        <h3><strong>{{ duty.dutyName }}</strong></h3>
+        <p><strong>Start Date:</strong> {{ duty.dutyStartDate | date:'MM/dd/yyyy'}}</p>
+        <p *ngIf="duty.dutyEndDate"><strong>End Date:</strong> {{ duty.dutyEndDate | date:'MM/dd/yyyy'}}</p>
+        <p *ngIf="!duty.dutyEndDate"><strong>End Date:</strong> TBD</p>
+      </li>
+    </ul>
+  </section>
+</div>

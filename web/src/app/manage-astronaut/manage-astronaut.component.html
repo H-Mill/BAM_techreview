@@ -1,0 +1,45 @@
+<div class="content" [ngClass]="{ 'single-column': !loadedPerson.name?.length }">
+  <section class="info-section">
+    <img src="../../assets/default-person.png"
+         alt="Profile picture of {{ name }}"
+         loading="lazy" />
+
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input type="text" matInput [(ngModel)]="name" placeholder="What is your name?">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Career Start Date</mat-label>
+      <input matInput [(ngModel)]="careerStartDate" [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Rank</mat-label>
+      <input type="text" matInput [(ngModel)]="currentRank" placeholder="What is your rank?">
+    </mat-form-field>
+
+    <button mat-stroked-button (click)="submit()" aria-label="Enlist or Update an Astronaut">{{ loadedPerson ? 'Update' : 'Create' }}</button>
+  </section>
+
+  <!--this would make a great component-->
+  <section class="duties-section" *ngIf="loadedPerson?.name?.length">
+    <div class="header-container">
+      <h2>Astronaut Duties</h2>
+      <a mat-stroked-button aria-label="Create new" href="/add-duty/{{loadedPerson.id}}">ADD NEW</a>
+    </div>
+
+    <p *ngIf="!loadedPerson.astronautDuties?.length">{{ name }} has no Astronaut duties. Maybe some day!</p>
+    <ul>
+      <li *ngFor="let duty of loadedPerson.astronautDuties">
+        <h3><strong>{{ duty.dutyName }}</strong></h3>
+        <p><strong>Start Date:</strong> {{ duty.dutyStartDate | date:'MM/dd/yyyy'}}</p>
+        <p *ngIf="duty.dutyEndDate"><strong>End Date:</strong> {{ duty.dutyEndDate | date:'MM/dd/yyyy'}}</p>
+        <p *ngIf="!duty.dutyEndDate"><strong>End Date:</strong> TBD</p>
+      </li>
+    </ul>
+  </section>
+</div>

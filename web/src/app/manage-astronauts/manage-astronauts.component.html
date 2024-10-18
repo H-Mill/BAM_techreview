@@ -1,0 +1,45 @@
+<div class="content">
+  <section class="personnel-container" aria-labelledby="personnel-heading">
+    <h2 id="personnel-heading">Personnel</h2>
+    <ul role="list" aria-label="List of astronauts and actions">
+      <li>
+        <mat-card class="person-card" appearance="outlined" aria-labelledby="create-astronaut-title">
+          <mat-card-header>
+            <mat-card-title id="create-astronaut-title">Create new Astronaut</mat-card-title>
+            <mat-card-subtitle>In a Galaxy, far, far away...</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image
+               src="../../assets/plus.png"
+               alt="Illustration for adding a new astronaut"
+               loading="lazy" />
+          <mat-card-actions>
+            <a mat-stroked-button aria-label="Enlist a new Astronaut" href="/manage-astronaut/">ENLIST</a>
+          </mat-card-actions>
+          <mat-card-content>
+            <p>Welcome aboard!</p>
+          </mat-card-content>
+        </mat-card>
+      </li>
+      <li *ngFor="let person of people">
+        <mat-card class="person-card" appearance="outlined">
+          <mat-card-header>
+            <mat-card-title id="astronaut-{{ person.id }}">{{ person.name }}</mat-card-title>
+            <mat-card-subtitle>{{ person?.astronautDetail?.currentRank ?? 'No Rank' }}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image
+               src="../../assets/default-person.png"
+               alt="Profile picture of {{ person.name }}"
+               loading="lazy" />
+          <mat-card-actions>
+            <a mat-stroked-button aria-label="Manage existing Astronaut" href="/manage-astronaut/{{ person.id }}">MANAGE</a>
+          </mat-card-actions>
+          <mat-card-content>
+            <p>
+              {{ person.name }} is a very mysterious person! I'm sure they are just too busy exploring the universe to tell us about themselves...
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </li>
+    </ul>
+  </section>
+</div>

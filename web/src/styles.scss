@@ -1,0 +1,20 @@
+@import 'colors.scss';
+
+html, body {
+    height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: $primary-text;
+  background: $primary-bg;
+}
+
+.content {
+  padding: 2em;
+}
+
+.mat-mdc-form-field{
+    height: min-content;
+}

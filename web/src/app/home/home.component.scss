@@ -1,0 +1,13 @@
+.hero-section {
+
+  img {
+    max-height: 40em;
+    width: 100%;
+    object-fit: cover;
+    box-shadow: 0 0 25px black;
+  }
+
+  .visually-hidden {
+    display: none;
+  }
+}

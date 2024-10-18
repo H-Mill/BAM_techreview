@@ -1,0 +1,66 @@
+@import '../../colors.scss';
+
+.header {
+  grid-area: head;
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: $secondary-bg;
+
+  .header__logo {
+    a {
+      display: flex;
+    }
+
+    img {
+      height: 4em;
+      aspect-ratio: 1;
+      margin: 1em;
+      border-radius: 10px;
+      box-shadow: 0 0 25px black;
+    }
+  }
+
+  .header__nav {
+    width: 100%;
+
+    .nav__list {
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      height: 100%;
+      list-style-type: none;
+      flex-wrap: wrap;
+      align-content: center;
+      font-weight: bold;
+      letter-spacing: 2px;
+
+
+      .nav__item {
+        text-align: center;
+
+        &:hover .nav__link {
+          border-bottom: 1px solid #76deff;
+          color: #76deff;
+        }
+
+        .nav__link {
+          display: block;
+          width: 100%;
+          height: 100%;
+          text-decoration: none;
+          color: #ffffff;
+
+          &:hover {
+          }
+        }
+      }
+    }
+  }
+
+  .header__user {
+    display: flex;
+    align-items: center;
+  }
+}

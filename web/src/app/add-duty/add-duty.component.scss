@@ -1,0 +1,49 @@
+@import '../../colors.scss';
+
+.content {
+  display: grid;
+
+  &.single-column {
+    grid-template-columns: auto;
+  }
+}
+
+.add-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  margin: 0 2em;
+  margin-bottom: 2em;
+}
+
+.duties-section {
+  text-align: center;
+
+  .header-container {
+    display: flex;
+    gap: 2em;
+  }
+
+  p {
+    text-align: start;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      text-align: start;
+      background: $secondary-bg;
+      border-radius: 10px;
+      padding: 2em 4em;
+      margin-bottom: 1em;
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .content {
+    grid-template-columns: auto auto;
+  }
+}

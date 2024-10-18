@@ -1,0 +1,44 @@
+@import '../../colors.scss';
+
+.personnel-container {
+
+  h2 {
+    text-align: center;
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));
+    gap: 16px;
+    justify-items: center;
+    padding: 0;
+
+    li {
+      list-style-type: none;
+    }
+  }
+
+  .mat-mdc-card {
+    background: $secondary-bg;
+    width: 25em;
+    height: 42em;
+  }
+
+  .mat-mdc-card-header {
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+
+  img {
+    margin-bottom: 1em;
+  }
+
+  .mat-mdc-card-content {
+    overflow-y: auto;
+  }
+
+  .mdc-button {
+    border-width: 2px;
+  }
+}
